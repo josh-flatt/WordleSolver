@@ -1,9 +1,9 @@
-package net.incandescently.worldesolver;
+package net.incandescently.wordlesolver;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class MainController {
     @FXML
     private Label welcomeText;
 
