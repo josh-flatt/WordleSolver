@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.incandescently.wordlesolver.MainController">
-   <children>
-      <TextField fx:id="startsField" layoutX="33.0" layoutY="119.0" />
-      <TextField fx:id="endsField" layoutX="33.0" layoutY="190.0" />
-      <TextField fx:id="containsField" layoutX="33.0" layoutY="269.0" />
-      <TextField fx:id="omitsField" layoutX="33.0" layoutY="347.0" />
-      <Button fx:id="runButton" layoutX="68.0" layoutY="400.0" mnemonicParsing="false" onAction="#onRunButtonClicked" prefHeight="44.0" prefWidth="105.0" text="Run" />
-      <CheckBox fx:id="startsInd" layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Use" />
-      <CheckBox fx:id="endsInd" layoutX="224.0" layoutY="193.0" mnemonicParsing="false" text="Use" />
-      <CheckBox fx:id="containsInd" layoutX="224.0" layoutY="272.0" mnemonicParsing="false" text="Use" />
-      <CheckBox fx:id="omitsInd" layoutX="224.0" layoutY="350.0" mnemonicParsing="false" text="Use" />
-      <Label layoutX="82.0" layoutY="103.0" text="Starts With" />
-      <Label layoutX="88.0" layoutY="174.0" text="Ends With" />
-      <Label layoutX="90.0" layoutY="253.0" text="Contains" />
-      <Label layoutX="99.0" layoutY="331.0" text="Omits" />
-      <TableView fx:id="wordsTable" layoutX="507.0" layoutY="102.0" prefHeight="396.0" prefWidth="213.0">
-        <columns>
-          <TableColumn fx:id="wordsColumn" prefWidth="212.0" text="Words" />
-        </columns>
-      </TableView>
-      <Label layoutX="294.0" layoutY="31.0" text="WORDLE">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+<ScrollPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.incandescently.wordlesolver.MainController">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Label layoutX="294.0" layoutY="31.0" text="WORDLE">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <TextField fx:id="startsField" layoutX="33.0" layoutY="119.0" />
+            <TextField fx:id="endsField" layoutX="33.0" layoutY="190.0" />
+            <TextField fx:id="containsField" layoutX="33.0" layoutY="269.0" />
+            <TextField fx:id="omitsField" layoutX="33.0" layoutY="347.0" />
+
+            <TextField fx:id="letter1Field" alignment="CENTER" layoutX="294.0" layoutY="140.0" prefHeight="32.0" prefWidth="33.0" promptText="1" />
+            <TextField fx:id="letter2Field" alignment="CENTER" layoutX="294.0" layoutY="186.0" prefHeight="32.0" prefWidth="33.0" promptText="2" />
+            <TextField fx:id="letter4Field" alignment="CENTER" layoutX="294.0" layoutY="274.0" prefHeight="32.0" prefWidth="33.0" promptText="4" />
+            <TextField fx:id="letter3Field" alignment="CENTER" layoutX="294.0" layoutY="229.0" prefHeight="32.0" prefWidth="33.0" promptText="3" />
+            <TextField fx:id="letter5Field" alignment="CENTER" layoutX="294.0" layoutY="315.0" prefHeight="32.0" prefWidth="33.0" promptText="5" />
+
+            <Button fx:id="runButton" layoutX="68.0" layoutY="400.0" mnemonicParsing="false" onAction="#onRunButtonClicked" prefHeight="44.0" prefWidth="105.0" text="Run" />
+
+            <TableView fx:id="wordsTable" layoutX="507.0" layoutY="102.0" prefHeight="396.0" prefWidth="213.0">
+               <columns>
+                  <TableColumn fx:id="wordsColumn" prefWidth="197.0" text="Words" />
+               </columns>
+            </TableView>
+            <Label layoutX="84.0" layoutY="102.0" text="Starts With" />
+            <Label layoutX="88.0" layoutY="172.0" text="Ends With" />
+            <Label layoutX="90.0" layoutY="253.0" text="Contains" />
+            <Label layoutX="99.0" layoutY="331.0" text="Omits" />
+            <Label layoutX="344.0" layoutY="148.0" text="1st Position" />
+            <Label layoutX="344.0" layoutY="194.0" text="2nd Position" />
+            <Label layoutX="344.0" layoutY="237.0" text="3rd Position" />
+            <Label layoutX="344.0" layoutY="282.0" text="4th Position" />
+            <Label layoutX="344.0" layoutY="323.0" text="5th Position" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

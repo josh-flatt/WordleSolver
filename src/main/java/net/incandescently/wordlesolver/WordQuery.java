@@ -18,14 +18,15 @@ public class WordQuery {
     private String wordOmits;
     private List<String> wordleWords;
 
-    public WordQuery(String wordStarts, String wordEnds, String wordContains, String wordOmits) {
+    public WordQuery(String wordStarts, String wordEnds, String wordContains, String wordOmits, Character[] letters) {
         this.wordleWords = new ArrayList<>();
         initializeWordleWords();
         List<String> starts = filterByWordStarts(wordStarts, wordleWords);
         List<String> ends = filterByWordEnds(wordEnds, starts);
         List<String> contains = filterByWordContains(wordContains, ends);
         List<String> omits = filterByWordOmits(wordOmits, contains);
-        wordleWords = omits;
+        List<String> result = filterByLetterPlacement(letters, omits);
+        wordleWords = result;
     }
 
     public List<String> getResult() {
@@ -124,6 +125,23 @@ public class WordQuery {
                     }
                 }
                 if (flag) {
+                    query.remove(word);
+                    break;
+                }
+            }
+        }
+        return query;
+    }
+
+    private List<String> filterByLetterPlacement(Character[] letters, List<String> wordList) {
+        List<String> query = new ArrayList<>(wordList);
+        boolean flag;
+        for (String word : wordList) {
+            for (int i=0; i < 5; i++) {
+                if (letters[i] == '\u0000') {
+                    continue;
+                }
+                if (letters[i] != word.charAt(i)) {
                     query.remove(word);
                     break;
                 }

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 public class MainController {
@@ -21,13 +22,15 @@ public class MainController {
     @FXML
     private TextField omitsField;
     @FXML
-    private CheckBox startsInd;
+    private TextField letter1Field;
     @FXML
-    private CheckBox endsInd;
+    private TextField letter2Field;
     @FXML
-    private CheckBox containsInd;
+    private TextField letter3Field;
     @FXML
-    private CheckBox omitsInd;
+    private TextField letter4Field;
+    @FXML
+    private TextField letter5Field;
     @FXML
     protected TableView<String> wordsTable;
     @FXML
@@ -41,7 +44,28 @@ public class MainController {
         String wordEnds = this.endsField.getText();
         String wordContains = this.containsField.getText();
         String wordOmits = this.omitsField.getText();
-        WordQuery q = new WordQuery(wordStarts, wordEnds, wordContains, wordOmits);
+        char letter1 = '\u0000';
+        char letter2 = '\u0000';
+        char letter3 = '\u0000';
+        char letter4 = '\u0000';
+        char letter5 = '\u0000';
+        if (!this.letter1Field.getText().isEmpty()) {
+            letter1 = this.letter1Field.getText().charAt(0);
+        }
+        if (!this.letter2Field.getText().isEmpty()) {
+            letter2 = this.letter2Field.getText().charAt(0);
+        }
+        if (!this.letter3Field.getText().isEmpty()) {
+            letter3 = this.letter3Field.getText().charAt(0);
+        }
+        if (!this.letter4Field.getText().isEmpty()) {
+            letter4 = this.letter4Field.getText().charAt(0);
+        }
+        if (!this.letter5Field.getText().isEmpty()) {
+            letter5 = this.letter5Field.getText().charAt(0);
+        }
+        Character[] letters = new Character[] {letter1, letter2, letter3, letter4, letter5};
+        WordQuery q = new WordQuery(wordStarts, wordEnds, wordContains, wordOmits, letters);
 //        ObservableList<String> result = FXCollections.observableList(q.filterByWordStarts(wordStarts));
 //        ObservableList<String> result = FXCollections.observableList(q.filterByWordEnds(wordEnds));
 //        ObservableList<String> result = FXCollections.observableList(q.filterByWordContains(wordContains));
