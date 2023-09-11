@@ -55,4 +55,72 @@ public class WordQuery {
         }
         return query;
     }
+
+    public List<String> filterByWordEnds(String wordEnds) {
+        List<String> query = new ArrayList<>(this.wordleWords);
+        int inputLength = wordEnds.length();
+        if(inputLength < 1) {
+            return query;
+        }
+        for (String word : this.wordleWords) {
+            for (int i=0; i < inputLength; i++) {
+                if (word.charAt(4-i) != wordEnds.charAt(inputLength-1-i)) {
+                    query.remove(word);
+                    break;
+                }
+            }
+        }
+        return query;
+    }
+
+    public List<String> filterByWordContains(String wordContains) {
+        List<String> query = new ArrayList<>(this.wordleWords);
+        int inputLength = wordContains.length();
+        if (inputLength < 1) {
+            return query;
+        }
+        boolean flag;
+        for (String word : this.wordleWords) {
+            flag = false;
+            for (char c : wordContains.toCharArray()) {
+                for (char d : word.toCharArray()) {
+                    if (c == d) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    query.remove(word);
+                    break;
+                }
+                flag = false;
+            }
+        }
+        return query;
+    }
+
+    public List<String> filterByWordOmits(String wordOmits) {
+        List<String> query = new ArrayList<>(this.wordleWords);
+        int inputLength = wordOmits.length();
+        if (inputLength < 1) {
+            return query;
+        }
+        boolean flag;
+        for (String word : this.wordleWords) {
+            for (char c : wordOmits.toCharArray()) {
+                flag = false;
+                for (char d : word.toCharArray()) {
+                    if (c == d) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag) {
+                    query.remove(word);
+                    break;
+                }
+            }
+        }
+        return query;
+    }
 }
