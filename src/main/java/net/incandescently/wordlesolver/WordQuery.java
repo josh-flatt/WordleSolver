@@ -18,11 +18,19 @@ public class WordQuery {
     private String wordOmits;
     private List<String> wordleWords;
 
-    public WordQuery() {
+    public WordQuery(String wordStarts, String wordEnds, String wordContains, String wordOmits) {
         this.wordleWords = new ArrayList<>();
         initializeWordleWords();
+        List<String> starts = filterByWordStarts(wordStarts, wordleWords);
+        List<String> ends = filterByWordEnds(wordEnds, starts);
+        List<String> contains = filterByWordContains(wordContains, ends);
+        List<String> omits = filterByWordOmits(wordOmits, contains);
+        wordleWords = omits;
     }
 
+    public List<String> getResult() {
+        return wordleWords;
+    }
     private void initializeWordleWords() {
         String basePath = new File("").getAbsolutePath();
         Path filePath = Path.of(basePath.concat("/src/main/resources/net/incandescently/wordlesolver/words.txt"));
@@ -39,13 +47,13 @@ public class WordQuery {
         }
     }
 
-    public List<String> filterByWordStarts(String wordStarts) {
-        List<String> query = new ArrayList<>(this.wordleWords);
+    public List<String> filterByWordStarts(String wordStarts, List<String> wordList) {
+        List<String> query = new ArrayList<>(wordList);
         int inputLength = wordStarts.length();
         if(inputLength < 1) {
             return query;
         }
-        for (String word : this.wordleWords) {
+        for (String word : wordList) {
             for (int i = 0; i < inputLength; i++) {
                 if (word.charAt(i) != wordStarts.charAt(i)) {
                     query.remove(word);
@@ -56,13 +64,13 @@ public class WordQuery {
         return query;
     }
 
-    public List<String> filterByWordEnds(String wordEnds) {
-        List<String> query = new ArrayList<>(this.wordleWords);
+    public List<String> filterByWordEnds(String wordEnds, List<String> wordList) {
+        List<String> query = new ArrayList<>(wordList);
         int inputLength = wordEnds.length();
         if(inputLength < 1) {
             return query;
         }
-        for (String word : this.wordleWords) {
+        for (String word : wordList) {
             for (int i=0; i < inputLength; i++) {
                 if (word.charAt(4-i) != wordEnds.charAt(inputLength-1-i)) {
                     query.remove(word);
@@ -73,14 +81,14 @@ public class WordQuery {
         return query;
     }
 
-    public List<String> filterByWordContains(String wordContains) {
-        List<String> query = new ArrayList<>(this.wordleWords);
+    public List<String> filterByWordContains(String wordContains, List<String> wordList) {
+        List<String> query = new ArrayList<>(wordList);
         int inputLength = wordContains.length();
         if (inputLength < 1) {
             return query;
         }
         boolean flag;
-        for (String word : this.wordleWords) {
+        for (String word : wordList) {
             flag = false;
             for (char c : wordContains.toCharArray()) {
                 for (char d : word.toCharArray()) {
@@ -99,14 +107,14 @@ public class WordQuery {
         return query;
     }
 
-    public List<String> filterByWordOmits(String wordOmits) {
-        List<String> query = new ArrayList<>(this.wordleWords);
+    public List<String> filterByWordOmits(String wordOmits, List<String> wordList) {
+        List<String> query = new ArrayList<>(wordList);
         int inputLength = wordOmits.length();
         if (inputLength < 1) {
             return query;
         }
         boolean flag;
-        for (String word : this.wordleWords) {
+        for (String word : wordList) {
             for (char c : wordOmits.toCharArray()) {
                 flag = false;
                 for (char d : word.toCharArray()) {

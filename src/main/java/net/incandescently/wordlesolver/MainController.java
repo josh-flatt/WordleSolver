@@ -41,11 +41,12 @@ public class MainController {
         String wordEnds = this.endsField.getText();
         String wordContains = this.containsField.getText();
         String wordOmits = this.omitsField.getText();
-        WordQuery q = new WordQuery();
+        WordQuery q = new WordQuery(wordStarts, wordEnds, wordContains, wordOmits);
 //        ObservableList<String> result = FXCollections.observableList(q.filterByWordStarts(wordStarts));
 //        ObservableList<String> result = FXCollections.observableList(q.filterByWordEnds(wordEnds));
 //        ObservableList<String> result = FXCollections.observableList(q.filterByWordContains(wordContains));
-        ObservableList<String> result = FXCollections.observableList(q.filterByWordOmits(wordOmits));
+//        ObservableList<String> result = FXCollections.observableList(q.filterByWordOmits(wordOmits));
+        ObservableList<String> result = FXCollections.observableList(q.getResult());
 
         wordsTable.setItems(null);
         wordsTable.setItems(result);
