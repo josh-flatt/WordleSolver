@@ -25,8 +25,8 @@
 
             <TextField fx:id="letter1Field" alignment="CENTER" layoutX="294.0" layoutY="140.0" prefHeight="32.0" prefWidth="33.0" promptText="1" />
             <TextField fx:id="letter2Field" alignment="CENTER" layoutX="294.0" layoutY="186.0" prefHeight="32.0" prefWidth="33.0" promptText="2" />
-            <TextField fx:id="letter4Field" alignment="CENTER" layoutX="294.0" layoutY="274.0" prefHeight="32.0" prefWidth="33.0" promptText="4" />
             <TextField fx:id="letter3Field" alignment="CENTER" layoutX="294.0" layoutY="229.0" prefHeight="32.0" prefWidth="33.0" promptText="3" />
+            <TextField fx:id="letter4Field" alignment="CENTER" layoutX="294.0" layoutY="274.0" prefHeight="32.0" prefWidth="33.0" promptText="4" />
             <TextField fx:id="letter5Field" alignment="CENTER" layoutX="294.0" layoutY="315.0" prefHeight="32.0" prefWidth="33.0" promptText="5" />
 
             <Button fx:id="runButton" layoutX="68.0" layoutY="400.0" mnemonicParsing="false" onAction="#onRunButtonClicked" prefHeight="44.0" prefWidth="105.0" text="Run" />
