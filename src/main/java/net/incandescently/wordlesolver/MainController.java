@@ -40,8 +40,10 @@ public class MainController {
 
     @FXML
     protected void onRunButtonClicked(ActionEvent event) {
-        String wordStarts = this.startsField.getText();
-        String wordEnds = this.endsField.getText();
+//        String wordStarts = this.startsField.getText();
+        String wordStarts = "";
+//        String wordEnds = this.endsField.getText();
+        String wordEnds = "";
         String wordContains = this.containsField.getText();
         String wordOmits = this.omitsField.getText();
         char letter1 = '\u0000';
